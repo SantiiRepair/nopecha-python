@@ -2,6 +2,7 @@ import typing
 from abc import ABC, abstractmethod
 from logging import getLogger
 from urllib.parse import urlencode
+from typing import Union
 
 from .types import (
     AudioRecognitionRequest,
@@ -37,14 +38,14 @@ class UniformResponse(typing.NamedTuple):
 
 
 class APIClientMixin:
-    key: str | None = None
+    key: Union[str, None] = None
     post_max_attempts: int = 10
     get_max_attempts: int = 120
     host = "https://api.nopecha.com"
 
     def __init__(
         self,
-        key: str | None = None,
+        key: Union[str, None] = None,
         *,
         post_max_attempts: int = 10,
         get_max_attempts: int = 120,
